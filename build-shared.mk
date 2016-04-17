@@ -1,6 +1,6 @@
 ARCH_LIBS :=
 ARCH_CFLAGS :=
-LIBS := -lstdc++
+LIBS := -lstdc++ -ldl
 INCLUDES := $(foreach inc,$(LOCAL_C_INCLUDES),-I$(inc))
 OBJ_FILES := $(LOCAL_SRC_FILES)
 ifeq ($(LOCAL_MODULE),xash)
@@ -24,7 +24,7 @@ MODULE_FILE := lib$(LOCAL_MODULE_FILENAME:.so=).so
 	$(CC) $(MICRONDK_TARGET_CFLAGS) $(LOCAL_CONLYFLAGS) $(INCLUDES) $(DEFINES) -fPIC -c $< -o $@
 
 %.o : %.cpp
-	$(CXX) $(MICRONDK_TARGET_CFLAGS) $(INCLUDES) $(DEFINES) -fPIC -c $< -o $@
+	$(CXX) $(MICRONDK_TARGET_CFLAGS) $(LOCAL_CPPFLAGS) $(INCLUDES) $(DEFINES) -fPIC -c $< -o $@
 
 $(MODULE_FILE) : $(OBJ_FILES)
 #	echo $(OBJ_FILES) $(INCLUDES)
