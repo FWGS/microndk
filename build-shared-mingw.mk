@@ -28,9 +28,11 @@ endif
 %.o : %.cpp
 	$(CXX) $(MICRONDK_TARGET_CFLAGS) $(INCLUDES) $(DEFINES) -c $< -o $@
 
+LOCAL_LDLIBS := $(filter-out $(LOCAL_LDLIBS),-llog)
+
 $(MODULE_FILE) : $(OBJ_FILES)
 #	echo $(OBJ_FILES) $(INCLUDES)
-	g++ -static-libgcc -static-libstdc++ -s -shared -Wl,--add-stdcall-alias -o $(MODULE_FILE) $(ARCH_LIBS) $(LDFLAGS) $(OBJ_FILES) $(ARCH_LIBS) $(LIBS) -Wl,--no-warn-mismatch -Wl,--no-undefined
+	g++ -static-libgcc -static-libstdc++ -s -shared -Wl,--add-stdcall-alias -o $(MODULE_FILE) $(ARCH_LIBS) $(LDFLAGS) $(OBJ_FILES) $(ARCH_LIBS) $(LIBS) $(LOCAL_LDFLAGS) $(LOCAL_LDLIBS) -Wl,--no-warn-mismatch -Wl,--no-undefined
 clean:
 	del $(subst /,\,$(OBJ_FILES))
 .PHONY: depend clean list
