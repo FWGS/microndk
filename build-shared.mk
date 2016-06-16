@@ -5,7 +5,10 @@ INCLUDES := $(foreach inc,$(LOCAL_C_INCLUDES),-I$(inc))
 OBJ_FILES := $(LOCAL_SRC_FILES)
 ifeq ($(LOCAL_MODULE),xash)
 OBJ_FILES += $(wildcard $(NANOGL_PATH)/*.cpp)
-LIBS += libSDL2.so -lm
+LIBS += -lm -llog
+ifeq ($()XASH_SDL),1)
+LIBS += libSDL.so
+endif
 INCLUDES += -I$(NANOGL_PATH)/GL
 endif
 ifeq ($(TARGET_ARCH_ABI),armeabi-v7a-hard)
