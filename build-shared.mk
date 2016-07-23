@@ -33,7 +33,7 @@ LOCAL_LDLIBS := $(filter-out -llog,$(LOCAL_LDLIBS))
 
 $(MODULE_FILE) : $(OBJ_FILES)
 #	echo $(OBJ_FILES) $(INCLUDES)
-	$(CXX) -lstdc++ -o $(MODULE_FILE) -shared  $(LIBS) $(LOCAL_CPPFLAGS) $(ARCH_LIBS) $(LDFLAGS) $(LOCAL_LDLIBS) $(LOCAL_LDFLAGS) $(OBJ_FILES) $(ARCH_LIBS) -Wl,--no-warn-mismatch -Wl,--no-undefined -Wl,-soname=$(MODULE_FILE) -lstdc++
+	$(CXX) -lstdc++ -o $(MODULE_FILE) -shared  $(LIBS) $(LOCAL_CPPFLAGS) $(ARCH_LIBS) $(LDFLAGS) $(LOCAL_LDFLAGS) $(OBJ_FILES) $(LOCAL_LDLIBS) $(ARCH_LIBS) -Wl,--no-warn-mismatch -Wl,--no-undefined -Wl,-soname=$(MODULE_FILE) -lstdc++
 clean:
 	$(RM) $(OBJ_FILES)
 .PHONY: depend clean list

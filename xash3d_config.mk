@@ -16,5 +16,9 @@ ifeq ($(TARGET_ARCH_ABI),armeabi)
 LOCAL_CFLAGS += $(CFLAGS_OPT_ARMv5)
 endif
 ifeq ($(TARGET_ARCH_ABI),x86)
+BITS := $(shell getconf LONG_BIT)
+ifeq($(BITS),64)
+LOCAL_CFLAGS += -m32
+endif
 LOCAL_CFLAGS += $(CFLAGS_OPT_X86)
 endif
