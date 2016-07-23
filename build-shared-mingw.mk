@@ -28,7 +28,7 @@ endif
 %.o : %.cpp
 	$(CXX) $(MICRONDK_TARGET_CFLAGS) $(INCLUDES) $(DEFINES) -c $< -o $@
 
-LOCAL_LDLIBS := $(filter-out $(LOCAL_LDLIBS),-llog)
+LOCAL_LDLIBS := $(filter-out -llog,$(LOCAL_LDLIBS))
 
 $(MODULE_FILE) : $(OBJ_FILES)
 #	echo $(OBJ_FILES) $(INCLUDES)
