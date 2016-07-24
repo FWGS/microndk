@@ -1,5 +1,5 @@
 TARGET_ARCH_ABI = armeabi-v7a-hard
-CFLAGS_OPT :=  -Og -ggdb -funsafe-math-optimizations -ftree-vectorize -fgraphite-identity -floop-interchange -funsafe-loop-optimizations -finline-limit=1024
+CFLAGS_OPT :=  -O3 -ggdb -funsafe-math-optimizations -ftree-vectorize -fgraphite-identity -floop-interchange -funsafe-loop-optimizations -finline-limit=1024
 CFLAGS_OPT_ARM := -mthumb -mfpu=neon -mcpu=cortex-a9 -pipe -mvectorize-with-neon-quad -DVECTORIZE_SINCOS -fPIC
 CFLAGS_OPT_ARMv5 :=-march=armv6 -mfpu=vfp -marm -pipe
 CFLAGS_OPT_X86 := -mtune=atom -march=atom -mssse3 -mfpmath=sse -funroll-loops -pipe -DVECTORIZE_SINCOS
@@ -16,9 +16,5 @@ ifeq ($(TARGET_ARCH_ABI),armeabi)
 LOCAL_CFLAGS += $(CFLAGS_OPT_ARMv5)
 endif
 ifeq ($(TARGET_ARCH_ABI),x86)
-BITS := $(shell getconf LONG_BIT)
-ifeq($(BITS),64)
-LOCAL_CFLAGS += -m32
-endif
 LOCAL_CFLAGS += $(CFLAGS_OPT_X86)
 endif
