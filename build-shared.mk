@@ -1,11 +1,11 @@
 ARCH_LIBS :=
 ARCH_CFLAGS :=
-LIBS := -lstdc++ -ldl -lm
+LIBS := -lstdc++ -ldl
 INCLUDES := $(foreach inc,$(LOCAL_C_INCLUDES),-I$(inc))
 OBJ_FILES := $(LOCAL_SRC_FILES)
 ifeq ($(LOCAL_MODULE),xash)
 OBJ_FILES += $(wildcard $(NANOGL_PATH)/*.cpp)
-LIBS += -lm -llog
+LIBS += -llog
 ifeq ($()XASH_SDL),1)
 LIBS += libSDL.so
 endif
@@ -14,6 +14,8 @@ endif
 ifeq ($(TARGET_ARCH_ABI),armeabi-v7a-hard)
     ARCH_CFLAGS += -I$(MICRONDK_DIR) -D_NDK_MATH_NO_SOFTFP=1 -mhard-float -mfloat-abi=hard
     ARCH_LIBS += $(MICRONDK_DIR)/libm_hard.a
+else
+    ARCH_LIBS += -lm
 endif
 OBJ_FILES := $(OBJ_FILES:.cpp=.o)
 OBJ_FILES := $(OBJ_FILES:.c=.o)
