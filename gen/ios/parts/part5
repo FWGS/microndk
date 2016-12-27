@@ -1,0 +1,32 @@
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = su.FWGS.lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4962BB731E0EBD3100678E96 /* Build configuration list for PBXProject "lib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4962BB8B1E0EBD3200678E96 /* Debug */,
+				4962BB8C1E0EBD3200678E96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4962BB8D1E0EBD3200678E96 /* Build configuration list for PBXNativeTarget "lib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4962BB8E1E0EBD3200678E96 /* Debug */,
+				4962BB8F1E0EBD3200678E96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4962BB701E0EBD3100678E96 /* Project object */;
+}

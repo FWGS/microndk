@@ -24,6 +24,12 @@ ifneq ($(MICRONDK_OS),mingw)
 else
     BUILD_SHARED_LIBRARY := $(MICRONDK_DIR)/build-shared-mingw.mk
 endif
+
+ifneq ($(GENERATE),)
+    BUILD_SHARED_LIBRARY := $(MICRONDK_DIR)/build-shared-gen.mk
+    XASH3D_CONFIG := $(MICRONDK_DIR)/gen/$(GENERATE)/config.mk
+endif
+
 NANOGL_PATH=../nanogl
 SDL_PATH=../SDL2
 XASH_SDL=1
