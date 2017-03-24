@@ -1,4 +1,4 @@
-TARGET_ARCH_ABI = armeabi-v7a-hard
+TARGET_ARCH_ABI := armeabi-v7a-hard
 CFLAGS_OPT :=  -O3 -ggdb -funsafe-math-optimizations -ftree-vectorize -fgraphite-identity -floop-interchange -funsafe-loop-optimizations -finline-limit=1024
 CFLAGS_OPT_ARM := -mthumb -mfpu=neon -mcpu=cortex-a9 -pipe -mvectorize-with-neon-quad -DVECTORIZE_SINCOS -fPIC
 CFLAGS_OPT_ARMv5 :=-march=armv6 -mfpu=vfp -marm -pipe

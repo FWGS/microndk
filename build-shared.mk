@@ -12,8 +12,8 @@ endif
 INCLUDES += -I$(NANOGL_PATH)/GL
 endif
 ifeq ($(TARGET_ARCH_ABI),armeabi-v7a-hard)
-    ARCH_CFLAGS += -I$(MICRONDK_DIR) -D_NDK_MATH_NO_SOFTFP=1 -mhard-float -mfloat-abi=hard
-    ARCH_LIBS += $(MICRONDK_DIR)/libm_hard.a
+    ARCH_CFLAGS += -I$(MICRONDK_DIR)/android-hardfp -D_NDK_MATH_NO_SOFTFP=1 -mhard-float -mfloat-abi=hard
+    ARCH_LIBS += $(MICRONDK_DIR)/android-hardfp/libm_hard.a
 else
     ARCH_LIBS += -lm
 endif

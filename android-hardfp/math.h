@@ -21,10 +21,13 @@
 #include <sys/types.h>
 #include <limits.h>
 //#undef __NDK_FPABI_MATH__
-//#define softfp __attribute__ ((pcs("aapcs"))) 
-//#define __NDK_FPABI_MATH__
+#ifndef __NDK_FPABI_MATH__
+#endif
+#define softfp __attribute__ ((pcs("aapcs"))) 
+#define __NDK_FPABI_MATH__
+#ifndef __pure2
 #define __pure2
-
+#endif
 /*
  * ANSI/POSIX
  */
