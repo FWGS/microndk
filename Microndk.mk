@@ -6,6 +6,12 @@ endif
 my-dir := $(shell pwd)
 PROJECT_DIR ?= $(shell pwd)
 MICRONDK_DIR ?= $(dir $(lastword $(MAKEFILE_LIST)))
+SYSROOT_DIR ?= 
+ifneq ($(SYSROOT_DIR),)
+	SYSROOT_CFLAGS = -I$(SYSROOT_DIR)/include
+	SYSROOT_LIBS = -L$(SYSROOT_DIR)/lib
+endif
+
 
 SYS := $(shell $(CC) -dumpmachine)
 ifneq (, $(findstring linux, $(SYS)))
