@@ -34,5 +34,5 @@ $(MODULE_FILE) : $(OBJ_FILES)
 #	echo $(OBJ_FILES) $(INCLUDES)
 	$(CXX) -static-libgcc -static-libstdc++ -shared -Wl,--add-stdcall-alias -o $(MODULE_FILE) $(ARCH_LIBS) $(LDFLAGS) $(OBJ_FILES) $(ARCH_LIBS) $(LIBS) $(LOCAL_LDFLAGS) $(LOCAL_LDLIBS) -Wl,--no-warn-mismatch -Wl,--no-undefined
 clean:
-	del $(subst /,\,$(OBJ_FILES))
+	cmd /c del $(subst /,\,$(OBJ_FILES))
 .PHONY: depend clean list
