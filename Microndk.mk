@@ -27,6 +27,12 @@ my-dir := .
 override LOCAL_PATH=.
 endif
 
+AMD64 ?= 0
+
+ifneq (, $(findstring x86_64, $(SYS)))
+AMD64 := 1
+endif
+
 CLEAR_VARS := $(MICRONDK_DIR)/clear_vars.mk
 XASH3D_CONFIG := $(MICRONDK_DIR)/xash3d_config.mk
 ifeq ($(MICRONDK_OS),mingw)
