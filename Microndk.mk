@@ -17,6 +17,9 @@ SYS := $(shell $(CC) -dumpmachine)
 ifneq (, $(findstring linux, $(SYS)))
 MICRONDK_OS := linux
 endif
+ifneq (, $(findstring emscripten, $(SYS)))
+MICRONDK_OS := emscripten
+endif
 ifneq (, $(findstring android, $(SYS)))
 MICRONDK_OS := android
 endif
@@ -43,6 +46,11 @@ endif
 
 ifeq ($(MICRONDK_OS),android)
     XASH3D_CONFIG := $(MICRONDK_DIR)/xash3d_config_android.mk
+endif
+
+ifeq ($(MICRONDK_OS),emscripten)
+    BUILD_SHARED_LIBRARY := $(MICRONDK_DIR)/build-emscripten-module.mk
+    XASH3D_CONFIG := $(MICRONDK_DIR)/xash3d_config_emscripten.mk
 endif
 
 ifneq ($(GENERATE),)
