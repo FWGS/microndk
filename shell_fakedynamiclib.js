@@ -34,7 +34,7 @@
   }
 
   Module.DLFCN.loadedLibs[handle] = {
-    refcount: 1,
+    refcount: 999, //dlclose will crash, so prevent it
     name: filename,
     module: lib_module,
     cached_functions: {}

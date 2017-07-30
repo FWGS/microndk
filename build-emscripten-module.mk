@@ -22,13 +22,13 @@ endif
 	$(CC) $(MICRONDK_TARGET_CFLAGS) $(LOCAL_CONLYFLAGS) $(INCLUDES) $(DEFINES) -fPIC -c $< -o $@
 
 %.o : %.cpp
-	$(CXX) $(MICRONDK_TARGET_CFLAGS) $(INCLUDES) $(DEFINES) -c $< -o $@
+	$(CXX) $(MICRONDK_TARGET_CFLAGS) $(LOCAL_CPPFLAGS) $(INCLUDES) $(DEFINES) -c $< -o $@
 
 LOCAL_LDLIBS := $(filter-out -llog,$(LOCAL_LDLIBS))
 
 $(MODULE_FILE) : $(OBJ_FILES)
 #	echo $(OBJ_FILES) $(INCLUDES)
-	$(CXX) -s MAIN_MODULE=0 -s SIDE_MODULE=1 -s WEBSOCKET_URL=\'$(LOCAL_MODULE)\' -s SHELL_FILE=\"$(MICRONDK_DIR)/shell_fakedynamiclib.js\" -g -static-libgcc -static-libstdc++ -o $(MODULE_FILE) $(ARCH_LIBS) $(LDFLAGS) $(OBJ_FILES) $(ARCH_LIBS) $(LIBS) $(LOCAL_LDFLAGS) $(LOCAL_LDLIBS) -Wl,--no-warn-mismatch -Wl,--no-undefined
+	$(CXX) -O3 --js-opts 1 --llvm-lto 3 -g0 -s INLINING_LIMIT=10 -s ELIMINATE_DUPLICATE_FUNCTIONS=1 -s AGGRESSIVE_VARIABLE_ELIMINATION=1 -s SIDE_MODULE=1 -s WEBSOCKET_URL=\'$(LOCAL_MODULE)\' -s SHELL_FILE=\"$(MICRONDK_DIR)/shell_fakedynamiclib.js\" -s -static-libgcc -static-libstdc++ -o $(MODULE_FILE) $(ARCH_LIBS) $(LDFLAGS) $(OBJ_FILES) $(ARCH_LIBS) $(LIBS) $(LOCAL_LDFLAGS) $(LOCAL_LDLIBS) -Wl,--no-warn-mismatch -Wl,--no-undefined
 clean:
 	rm -f $(OBJ_FILES)
 .PHONY: depend clean list

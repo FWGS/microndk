@@ -22,7 +22,7 @@ endif
 	$(CC) $(MICRONDK_TARGET_CFLAGS) $(LOCAL_CONLYFLAGS) $(INCLUDES) $(DEFINES) -fPIC -c $< -o $@
 
 %.o : %.cpp
-	$(CXX) $(MICRONDK_TARGET_CFLAGS) $(INCLUDES) $(DEFINES) -c $< -o $@
+	$(CXX) $(MICRONDK_TARGET_CFLAGS) $(LOCAL_CPPFLAGS) $(INCLUDES) $(DEFINES) -c $< -o $@
 
 LOCAL_LDLIBS := $(filter-out -llog,$(LOCAL_LDLIBS))
 

@@ -1,6 +1,6 @@
 TARGET_ARCH_ABI = native
-CFLAGS_OPT := -O3 -funsafe-math-optimizations -ftree-vectorize -fgraphite-identity -floop-interchange -funsafe-loop-optimizations -finline-limit=1024
-CFLAGS_GCC := -ggdb -g -fno-omit-frame-pointer
+CFLAGS_OPT := -Os -funsafe-math-optimizations -ftree-vectorize -funsafe-loop-optimizations -finline-limit=1024
+CFLAGS_GCC := -fno-omit-frame-pointer
 
 ifeq ($(AMD64),1)
 ifneq ($(64BIT),1)
