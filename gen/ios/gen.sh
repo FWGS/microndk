@@ -17,7 +17,7 @@ for entry in $CFLAGS
 do
 case "$entry" in
 	-std\=*) std=$(echo $entry|cut -d '=' -f2) ;;
-	*) echo                                 \"$entry\", ;;
+	*) echo                                 \"$(echo $entry|sed -e s/\"/\\\\\\\\\\\\\\\\\\\"/g)\", ;;
 esac
 done
 echo '				);'
