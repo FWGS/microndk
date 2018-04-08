@@ -15,9 +15,10 @@ cflags()
 {
 for entry in $CFLAGS
 do
+echo $(echo "$entry" | sed -e 's/"/\\\\\\\\\\"/g') > /dev/stderr
 case "$entry" in
 	-std\=*) std=$(echo $entry|cut -d '=' -f2) ;;
-	*) echo                                 \"$(echo $entry|sed -e s/\"/\\\\\\\\\\\\\\\\\\\"/g)\", ;;
+	*) echo                                 \"$(echo "$entry"|sed -e 's/"/\\\\\\\\\\"/g')\", ;;
 esac
 done
 echo '				);'
