@@ -1,6 +1,8 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				"GCC_OPTIMIZATION_LEVEL[arch=arm64]" = 1;
+				"GCC_UNROLL_LOOPS[arch=arm64]" = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_CFLAGS = (
